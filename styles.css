@@ -1,0 +1,157 @@
+/* General Body & Container Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header & Scroll Functionality */
+#page-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease-in-out;
+}
+
+#page-header.hidden {
+    transform: translateY(-100%);
+}
+
+/* Top Bar Styling */
+#top-bar {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.contact-info a {
+    margin-right: 20px;
+}
+
+.top-bar i {
+    margin-right: 8px;
+}
+
+/* Main Navigation Styling */
+#main-navigation {
+    padding: 10px 0;
+}
+
+#site-logo img {
+    max-height: 50px;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Button Styling */
+.contact-button {
+    border: 2px solid #3498db;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-weight: bold;
+    color: #3498db;
+    transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* === Responsive Media Queries === */
+
+/* For Tablets and Smaller Devices - Implements Horizontal Scroll */
+@media (max-width: 992px) {
+    #top-bar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .contact-info {
+        flex: 1; /* Allows the container to take up available space */
+        min-width: 0; /* Prevents layout issues with overflowing content */
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .contact-info::-webkit-scrollbar {
+        display: none;
+    }
+
+    .support-link {
+        flex-shrink: 0; /* Stops the support link from getting pushed away */
+        padding-left: 15px; /* Adds a safe space between the numbers and the link */
+    }
+}
+
+/* For Mobile Devices */
+@media (max-width: 768px) {
+    /* Hide desktop nav and show mobile toggle */
+    .nav-links, .desktop-contact {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Styling for the revealed mobile navigation */
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        padding: 10px 0;
+        gap: 0;
+    }
+
+    .nav-links.active li {
+        text-align: center;
+        padding: 15px 0;
+        width: 100%;
+    }
+    
+    .nav-links.active li:hover {
+        background-color: #f1f1f1;
+    }
+}
