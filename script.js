@@ -345,3 +345,63 @@ document.addEventListener("DOMContentLoaded", () => {
         counters.forEach(counter => observer.observe(counter));
     }
 });
+
+
+// 5 section -----------------------------------
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    // Select all the elements we want to animate
+    const introText = document.querySelector('.testimonial-intro-text');
+    const mainHeading = document.querySelector('.testimonial-main-heading');
+    const subtitle = document.querySelector('.testimonial-subtitle');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+    const observerOptions = {
+        root: null, // observes intersections relative to the viewport
+        rootMargin: '0px',
+        threshold: 0.1 // Run callback when 10% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // When an element enters the viewport
+            if (entry.isIntersecting) {
+                const target = entry.target;
+
+                // --- Animate the Header Text ---
+                if (target.classList.contains('testimonial-intro-text')) {
+                    target.style.animation = 'slideInTop 0.8s ease-out forwards';
+                } else if (target.classList.contains('testimonial-main-heading')) {
+                    target.style.animation = 'fadeInScale 0.9s ease-out forwards 0.2s';
+                } else if (target.classList.contains('testimonial-subtitle')) {
+                    target.style.animation = 'fadeInBottom 0.7s ease-out forwards 0.4s';
+                }
+                
+                // --- Animate the Testimonial Cards ("down box") ---
+                // This was the part that needed fixing.
+                else if (target.classList.contains('testimonial-card')) {
+                    const cardsArray = Array.from(testimonialCards);
+                    const index = cardsArray.indexOf(target);
+                    
+                    // Delay card animation to start after the header text is done.
+                    // Each card is staggered for a nice effect.
+                    setTimeout(() => {
+                        target.style.opacity = '1';
+                        target.style.transform = 'translateY(0)';
+                    }, 500 + (index * 150)); // Start after 500ms
+                }
+
+                // Stop observing the element once its animation is triggered
+                observer.unobserve(target);
+            }
+        });
+    }, observerOptions);
+
+    // Start observing all the target elements
+    if (introText) observer.observe(introText);
+    if (mainHeading) observer.observe(mainHeading);
+    if (subtitle) observer.observe(subtitle);
+    testimonialCards.forEach(card => observer.observe(card));
+});

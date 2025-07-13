@@ -1083,3 +1083,169 @@
         font-size: 0.95rem;
     }
 }
+
+
+/*-----------section 5 starts here------------*/
+
+
+
+
+
+@keyframes slideInTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.testimonial-section {
+    padding: 60px 20px; /* Vertical and horizontal padding */
+}
+
+.testimonial-container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+}
+
+/* --- Section Header Styling --- */
+.testimonial-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.testimonial-intro-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-20px); /* Start above */
+}
+
+}
+
+.testimonial-main-heading {
+   font-size: 42px;
+    font-weight: 700;
+    color: #222;
+    margin: 10px 0;
+    opacity: 0; /* Initially hidden */
+    transform: scale(0.95); /* Start slightly smaller */
+}
+
+
+.testimonial-subtitle {
+   font-size: 16px;
+    color: #666;
+    max-width: 400px;
+    margin: 0 auto; /* Center the subtitle */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(10px); /* Start below */
+}
+
+/* --- Testimonial Grid & Cards --- */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+    gap: 30px; /* Space between cards */
+}
+
+.testimonial-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-top: 5px solid #2c3e50;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* UPDATED LINE: Added 'opacity' to the transition for a smooth fade-in */
+    transition: transform 0.4s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+    opacity: 0; /* Initially hidden for animation */
+    transform: translateY(20px); /* Start slightly lower for animation */
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.testimonial-quote {
+    font-size: 15px;
+    color: #444;
+    margin: 0 0 25px 0;
+    flex-grow: 1; /* Ensures the quote takes up available space */
+}
+
+.testimonial-author-info {
+    text-align: left;
+}
+
+.testimonial-author-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.testimonial-author-status {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0 0 0;
+}
+
+
+
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 992px) {
+    .testimonial-grid {
+        grid-template-columns: 1fr 1fr; /* 2 columns on tablets */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .testimonial-section {
+        padding: 40px 15px;
+    }
+
+    .testimonial-main-heading {
+        font-size: 32px;
+    }
+    
+    .testimonial-grid {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+
+    .testimonial-card {
+        /* On mobile, cards won't have hover effects, but we keep the transition for JS animation */
+    }
+}
