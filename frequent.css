@@ -293,3 +293,283 @@ a {
 
 }
 
+/*------------footer---------------------*/
+
+
+
+
+/* Main Footer Section Wrapper */
+.unik-footer-section {
+    color: #e0e0e0;
+    width: 100%;
+    animation: fadeInOnLoad 1s ease-in-out;
+}
+
+/* Animation for page load */
+@keyframes fadeInOnLoad {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/*------------------------------------*/
+/* Top Call-to-Action (CTA) Bar       */
+/*------------------------------------*/
+.footer-cta-bar-unik {
+    background-color: #363B46;
+    padding: 10px 5%;
+}
+
+.cta-content-unik {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cta-text-unik {
+    text-align: center;
+    margin-right: 20px;
+}
+
+.cta-text-unik p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.cta-text-unik span {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.cta-image-unik img {
+    max-height: 80px;
+    vertical-align: middle;
+}
+
+/*------------------------------------*/
+/* Moving Text Banner (FINAL)         */
+/*------------------------------------*/
+.unik-marquee-banner {
+    background-color: #1B1F28;
+    padding: 15px 0;
+    overflow: hidden;      
+    white-space: nowrap;    
+    cursor: pointer; /* Add a pointer to show it's clickable */
+}
+
+/* This is the container that moves */
+.unik-marquee-wrapper {
+    display: inline-block;
+    animation: marquee-scroll-unik 30s linear infinite;
+}
+
+/*
+The :hover rule has been removed from here.
+*/
+
+/* A single block of text content */
+.unik-marquee-segment {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.unik-marquee-segment span {
+    padding: 0 2em;
+}
+
+/* The animation definition */
+@keyframes marquee-scroll-unik {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/*------------------------------------*/
+/* Main Footer Content Area           */
+/*------------------------------------*/
+.footer-main-content-unik {
+    background-color: #20242E;
+    padding: 50px 5%;
+}
+
+.footer-container-unik {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-col-unik {
+    font-size: 0.95rem;
+}
+
+/* Column 1: About Section */
+.footer-about-unik .footer-logo-unik {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-about-unik p {
+    margin: 0;
+}
+
+/* Common Styles for Headings and Lists */
+.footer-heading-unik {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.footer-heading-unik::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #ffffff;
+    margin-top: 8px;
+}
+
+.footer-links-unik,
+.footer-contact-unik {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links-unik li,
+.footer-contact-unik li {
+    margin-bottom: 12px;
+}
+
+.footer-links-unik a,
+.footer-contact-unik a,
+.footer-policies-unik a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links-unik a:hover,
+.footer-contact-unik a:hover,
+.footer-policies-unik a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+.footer-contact-unik i {
+    margin-right: 12px;
+    width: 16px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* Column 4: Policies */
+.policy-heading-unik {
+    margin-top: 30px;
+}
+
+.footer-policies-unik {
+    line-height: 1.8;
+}
+
+/*------------------------------------*/
+/* Bottom Bar (Social & Copyright)    */
+/*------------------------------------*/
+.footer-bottom-unik {
+    background-color: #20242E;
+    padding: 20px 5% 30px;
+    border-top: 1px solid #363B46;
+    text-align: center;
+}
+
+.footer-social-icons-unik {
+    margin-bottom: 20px;
+}
+
+.footer-social-icons-unik a {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin: 0 12px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social-icons-unik a:hover {
+    transform: scale(1.2) translateY(-2px);
+    color: #cccccc;
+}
+
+.footer-copyright-unik p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+/*------------------------------------*/
+/* Responsive Design (Media Queries)  */
+/*------------------------------------*/
+
+/* For Mobile Devices */
+@media (max-width: 768px) {
+    .cta-content-unik {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cta-text-unik {
+        margin-right: 0;
+    }
+    
+    .cta-text-unik p {
+        font-size: 1rem;
+    }
+    
+    .cta-text-unik span {
+        font-size: 1.5rem;
+    }
+
+    .unik-marquee-banner {
+        font-size: 1.2rem;
+    }
+    
+    .footer-container-unik {
+        grid-template-columns: 1fr; /* Stack columns vertically */
+        text-align: center;
+    }
+    
+    .footer-about-unik .footer-logo-unik {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .footer-heading-unik::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .footer-contact-unik li,
+    .footer-contact-unik li a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left; /* Align text within link */
+    }
+    
+    .footer-contact-unik i {
+        margin-right: 15px;
+    }
+
+}
