@@ -186,3 +186,50 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
+
+
+
+/*-----------------section 4 animation*-------*/
+
+
+/**
+ * Handles 'fade-in' animations for hero section content
+ * when they scroll into the viewport.
+ */
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Select the elements to be animated
+    const heroText = document.querySelector('.hero-text-content');
+    const heroFeatures = document.querySelector('.hero-features-grid');
+    
+    // An array of elements to observe for visibility
+    const animatedElements = [heroText, heroFeatures];
+
+    // Ensure elements exist before adding the observer
+    if (!animatedElements.every(el => el)) {
+        return; // Exit if any element is not found
+    }
+
+    /**
+     * Creates an observer that adds the 'is-visible' class to elements
+     * when they enter the viewport, triggering a CSS transition.
+     */
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // If the element is visible
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Once visible, we don't need to observe it anymore
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    });
+
+    // Attach the observer to each animated element
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+
+});
