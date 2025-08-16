@@ -1,302 +1,176 @@
 /* General Body & Container Styling */
-
 body {
-
     margin: 0;
-
     font-family: Arial, sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
-
     background-color: #f4f4f4;
-
 }
 
+/* Prevent horizontal scrolling */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ensure all elements stay within viewport */
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
 
 .container {
-
     max-width: 1200px;
-
     margin: 0 auto;
-
     padding: 0 15px;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
 }
-
 
 a {
-
     text-decoration: none;
-
     color: inherit;
-
 }
-
 
 /* Header & Scroll Functionality */
-
 #page-header {
-
     position: sticky;
-
     top: 0;
-
     width: 100%;
-
     z-index: 1000;
-
     background-color: #fff;
-
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-
     transition: transform 0.4s ease-in-out;
-
 }
-
 
 #page-header.hidden {
-
     transform: translateY(-100%);
-
 }
-
 
 /* Top Bar Styling */
-
 #top-bar {
-
     background-color: #2c3e50;
-
     color: #ecf0f1;
-
     padding: 20px 0;
-
     font-size: 14px;
-
 }
-
 
 .contact-info a {
-
     margin-right: 20px;
-
 }
-
 
 .top-bar i {
-
     margin-right: 8px;
-
 }
-
 
 /* Main Navigation Styling */
-
 #main-navigation {
-
     padding: 10px 0;
-
 }
-
 
 #site-logo img {
-
     max-height: 50px;
-
 }
-
 
 .nav-links {
-
     list-style: none;
-
     margin: 0;
-
     padding: 0;
-
     display: flex;
-
     gap: 30px;
-
     font-weight: bold;
-
     font-size: 16px;
-
 }
-
 
 /* Button Styling */
-
 .contact-button {
-
     border: 2px solid #3498db;
-
     border-radius: 25px;
-
     padding: 10px 25px;
-
     font-weight: bold;
-
     color: #3498db;
-
     transition: all 0.3s ease;
-
 }
-
 
 .contact-button:hover {
-
     background-color: #3498db;
-
     color: #ffffff;
-
 }
-
 
 .menu-toggle {
-
     display: none;
-
     background: none;
-
     border: none;
-
     font-size: 24px;
-
     cursor: pointer;
-
 }
-
 
 /* === Responsive Media Queries === */
 
-
 /* For Tablets and Smaller Devices - Implements Horizontal Scroll */
-
 @media (max-width: 992px) {
-
     #top-bar .container {
-
         display: flex;
-
         justify-content: space-between;
-
         align-items: center;
-
     }
-
 
     .contact-info {
-
-        flex: 1; /* Allows the container to take up available space */
-
-        min-width: 0; /* Prevents layout issues with overflowing content */
-
+        flex: 1;
+        min-width: 0;
         display: flex;
-
         overflow-x: auto;
-
         white-space: nowrap;
-
         -ms-overflow-style: none;
-
         scrollbar-width: none;
-
     }
-
 
     .contact-info::-webkit-scrollbar {
-
         display: none;
-
     }
-
 
     .support-link {
-
-        flex-shrink: 0; /* Stops the support link from getting pushed away */
-
-        padding-left: 15px; /* Adds a safe space between the numbers and the link */
-
+        flex-shrink: 0;
+        padding-left: 15px;
     }
-
 }
 
-
 /* For Mobile Devices */
-
 @media (max-width: 768px) {
-
     /* Hide desktop nav and show mobile toggle */
-
     .nav-links, .desktop-contact {
-
         display: none;
-
     }
-
+    
     .menu-toggle {
-
         display: block;
-
     }
-
 
     /* Styling for the revealed mobile navigation */
-
     .nav-links.active {
-
         display: flex;
-
         flex-direction: column;
-
         position: absolute;
-
         top: 100%;
-
         left: 0;
-
         width: 100%;
-
         background-color: #ffffff;
-
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-
         padding: 10px 0;
-
         gap: 0;
-
     }
-
 
     .nav-links.active li {
-
         text-align: center;
-
         padding: 15px 0;
-
         width: 100%;
-
     }
-
    
-
     .nav-links.active li:hover {
-
         background-color: #f1f1f1;
-
     }
-
 }
 
 /*------------footer---------------------*/
-
-
-
 
 /* Main Footer Section Wrapper */
 .unik-footer-section {
@@ -356,9 +230,9 @@ a {
 .unik-marquee-banner {
     background-color: #1B1F28;
     padding: 15px 0;
-    overflow: hidden;      
-    white-space: nowrap;    
-    cursor: pointer; /* Add a pointer to show it's clickable */
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 /* This is the container that moves */
@@ -366,10 +240,6 @@ a {
     display: inline-block;
     animation: marquee-scroll-unik 30s linear infinite;
 }
-
-/*
-The :hover rule has been removed from here.
-*/
 
 /* A single block of text content */
 .unik-marquee-segment {
@@ -393,7 +263,6 @@ The :hover rule has been removed from here.
     }
 }
 
-
 /*------------------------------------*/
 /* Main Footer Content Area           */
 /*------------------------------------*/
@@ -412,6 +281,9 @@ The :hover rule has been removed from here.
 
 .footer-col-unik {
     font-size: 0.95rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 /* Column 1: About Section */
@@ -461,6 +333,8 @@ The :hover rule has been removed from here.
     color: #e0e0e0;
     text-decoration: none;
     transition: color 0.3s ease, padding-left 0.3s ease;
+    display: inline-block;
+    max-width: 100%;
 }
 
 .footer-links-unik a:hover,
@@ -517,13 +391,22 @@ The :hover rule has been removed from here.
     font-size: 0.9rem;
 }
 
-
 /*------------------------------------*/
 /* Responsive Design (Media Queries)  */
 /*------------------------------------*/
 
 /* For Mobile Devices */
 @media (max-width: 768px) {
+    /* General mobile overflow protection */
+    * {
+        overflow-wrap: break-word;
+    }
+    
+    body {
+        -webkit-text-size-adjust: 100%;
+    }
+
+    /* CTA Bar adjustments */
     .cta-content-unik {
         flex-direction: column;
         gap: 15px;
@@ -541,13 +424,35 @@ The :hover rule has been removed from here.
         font-size: 1.5rem;
     }
 
+    /* Marquee Banner Fixes */
     .unik-marquee-banner {
-        font-size: 1.2rem;
+        white-space: normal;
+        padding: 10px;
+        text-align: center;
     }
     
+    .unik-marquee-wrapper {
+        animation: none;
+        display: block;
+    }
+    
+    .unik-marquee-segment {
+        display: block;
+        white-space: normal;
+        font-size: 1.2rem;
+        padding: 5px 0;
+    }
+    
+    /* Footer Content Fixes */
     .footer-container-unik {
-        grid-template-columns: 1fr; /* Stack columns vertically */
+        grid-template-columns: 1fr;
         text-align: center;
+        gap: 30px;
+    }
+    
+    .footer-col-unik {
+        min-width: 100%;
+        padding: 0 15px;
     }
     
     .footer-about-unik .footer-logo-unik {
@@ -563,13 +468,18 @@ The :hover rule has been removed from here.
     .footer-contact-unik li,
     .footer-contact-unik li a {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        text-align: left; /* Align text within link */
+        text-align: center;
     }
     
     .footer-contact-unik i {
-        margin-right: 15px;
+        margin-right: 0;
+        margin-bottom: 5px;
     }
 
+    /* Adjust footer padding */
+    .footer-main-content-unik {
+        padding: 30px 15px;
+    }
 }

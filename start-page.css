@@ -1,3 +1,4 @@
+
 .container {
 
     width: 90%;
@@ -960,7 +961,8 @@
     padding: 25px;
     text-align: center;
     flex: 1;
-    min-width: 200px;
+    min-width: 9rem;
+    height: 6.5rem;
     max-width: 250px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
@@ -997,7 +999,8 @@
     padding: 25px;
     text-align: center;
     flex: 1;
-    min-width: 200px;
+    min-width: 9rem;
+    height: 6.5rem;
     max-width: 250px;
     border-radius: 8px;
 }
@@ -1255,14 +1258,14 @@
 
 
 .hero-image-display {
-  height: 88vh;
+    height: 88vh;
     min-height: 400px;
     background-image: linear-gradient(rgba(45, 52, 62, 0.8), rgba(45, 52, 62, 0.8)), url('images/home/What They Say Img.webp');
     background-size: cover;
-    
     /* Your perfect DESKTOP focus point */
     background-position: 75% 32%;
 }
+
 /* --- MODIFIED Contact Info Section --- */
 .contact-info-section {
     /* ** THIS IS THE KEY **: Pulls the section up to overlap the image */
@@ -1281,14 +1284,14 @@
     justify-content: center;
     gap: 30px;
     max-width: 1200px;
-    margin: 0 auto; /* Center the container */
-    padding: 0 20px; /* Add horizontal padding for smaller screens */
+    margin: 0 auto;
+    padding: 0 20px;
     flex-wrap: wrap;
 }
 
 .contact-info-card {
     background-color: #fff;
-    padding: 40px;
+    padding: 30px;
     text-align: center;
     flex: 1;
     min-width: 280px;
@@ -1298,7 +1301,9 @@
     transform: translateY(30px);
     opacity: 0;
     transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    margin-bottom: 20px;
 }
+
 .contact-info-card.is-visible {
     transform: translateY(0);
     opacity: 1;
@@ -1308,14 +1313,11 @@
     transform: translateY(-10px);
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
 }
+
 .contact-info-card:hover {
-    transform: translateY(-10px); /* Lifts the card up */
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12); /* Enhances the shadow */
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
 }
-
-
-
-/* --- Card content and other styles remain the same --- */
 
 .contact-info-icon {
     display: inline-flex;
@@ -1341,12 +1343,12 @@
 }
 
 .contact-info-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: #555;
 }
 
-/* --- Help CTA Section (No Changes Needed) --- */
+/* --- Help CTA Section --- */
 .help-cta-section {
     padding: 80px 20px;
     text-align: center;
@@ -1384,21 +1386,63 @@
     transform: translateY(-2px);
 }
 
-
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
-    /* No change needed here, the flex-wrap property handles it */
+    .contact-info-card {
+        max-width: 45%;
+    }
 }
 
 @media (max-width: 768px) {
+    .hero-image-display {
+        height: 70vh;
+        background-position: 50% 30%;
+    }
+    
+    .contact-info-section {
+        margin-top: -80px;
+        padding-bottom: 40px;
+    }
+    
+    .contact-info-card {
+        max-width: 100%;
+        padding: 25px 20px;
+        margin-bottom: 15px;
+    }
+    
     .help-cta-heading {
         font-size: 2rem;
     }
-
+    
     .help-cta-section {
         padding: 50px 20px;
     }
+    
+    .help-cta-paragraph {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
     .hero-image-display {
-        /* Adjust this line to set the MOBILE focus point */
-        background-position: 50% 30%;
+        height: 60vh;
+        min-height: 300px;
+    }
+    
+    .contact-info-section {
+        margin-top: -60px;
+    }
+    
+    .contact-info-card {
+        min-width: 100%;
+    }
+    
+    .help-cta-heading {
+        font-size: 1.8rem;
+    }
+    
+    .help-cta-button {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
 }
