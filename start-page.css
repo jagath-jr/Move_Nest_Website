@@ -962,7 +962,7 @@
     text-align: center;
     flex: 1;
     min-width: 9rem;
-    height: 6.5rem;
+    height: 8rem;
     max-width: 250px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
@@ -1000,7 +1000,7 @@
     text-align: center;
     flex: 1;
     min-width: 9rem;
-    height: 6.5rem;
+    height: 8rem;
     max-width: 250px;
     border-radius: 8px;
 }
