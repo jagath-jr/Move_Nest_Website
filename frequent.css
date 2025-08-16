@@ -76,8 +76,11 @@ a {
 
 #site-logo img {
     max-height: 50px;
+     transition: transform 0.3s ease;
 }
-
+#site-logo:hover img {
+    transform: scale(1.1); /* Scales the image to 110% on hover */
+}
 .nav-links {
     list-style: none;
     margin: 0;
@@ -313,7 +316,13 @@ a {
     max-width: 200px;
     margin-bottom: 20px;
 }
+.footer-logo-unik {
+  transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
+}
 
+.footer-logo-unik:hover {
+  transform: scale(1.1); /* Scales the image to 110% of its original size */
+}
 .footer-about-unik p {
     margin: 0;
 }
