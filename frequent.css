@@ -225,42 +225,49 @@ a {
 }
 
 /*------------------------------------*/
-/* Moving Text Banner (FINAL)         */
+/* Enhanced Moving Text Banner         */
 /*------------------------------------*/
 .unik-marquee-banner {
     background-color: #1B1F28;
     padding: 15px 0;
     overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
+    position: relative;
 }
 
-/* This is the container that moves */
 .unik-marquee-wrapper {
-    display: inline-block;
-    animation: marquee-scroll-unik 30s linear infinite;
+    display: flex;
+    animation: marquee-scroll 40s linear infinite;
+    will-change: transform;
 }
 
-/* A single block of text content */
 .unik-marquee-segment {
-    display: inline-block;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 0 60px;
 }
 
 .unik-marquee-segment span {
-    padding: 0 2em;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    white-space: nowrap;
+    padding: 0 20px;
 }
 
-/* The animation definition */
-@keyframes marquee-scroll-unik {
-    from {
-        transform: translateX(0%);
+/* Animation with perfect loop */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
     }
-    to {
+    100% {
         transform: translateX(-50%);
     }
+}
+
+/* Pause on hover for better readability */
+.unik-marquee-banner:hover .unik-marquee-wrapper {
+    animation-play-state: paused;
 }
 
 /*------------------------------------*/
@@ -424,23 +431,22 @@ a {
         font-size: 1.5rem;
     }
 
-    /* Marquee Banner Fixes */
+    /* Marquee Banner Mobile Optimization */
     .unik-marquee-banner {
-        white-space: normal;
-        padding: 10px;
-        text-align: center;
+        padding: 12px 0;
     }
     
     .unik-marquee-wrapper {
-        animation: none;
-        display: block;
+        animation-duration: 20s;
     }
     
     .unik-marquee-segment {
-        display: block;
-        white-space: normal;
+        padding: 0 20px;
+    }
+    
+    .unik-marquee-segment span {
         font-size: 1.2rem;
-        padding: 5px 0;
+        padding: 0 10px;
     }
     
     /* Footer Content Fixes */
@@ -481,5 +487,16 @@ a {
     /* Adjust footer padding */
     .footer-main-content-unik {
         padding: 30px 15px;
+    }
+}
+
+/* Smaller Mobile Devices */
+@media (max-width: 480px) {
+    .unik-marquee-segment span {
+        font-size: 1rem;
+    }
+    
+    .unik-marquee-wrapper {
+        animation-duration: 15s;
     }
 }
