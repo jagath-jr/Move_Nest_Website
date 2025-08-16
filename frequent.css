@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
     background-color: #f4f4f4;
+    padding-top: 8rem;
 }
 
 /* Prevent horizontal scrolling */
@@ -33,18 +34,24 @@ a {
 
 /* Header & Scroll Functionality */
 #page-header {
-    position: sticky;
+   position: fixed; /* Changed from sticky to fixed for more reliable behavior */
     top: 0;
     width: 100%;
     z-index: 1000;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.4s ease-in-out;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.25s ease;
+    will-change: transform;
 }
-
 #page-header.hidden {
     transform: translateY(-100%);
+    box-shadow: none;
 }
+.nav-links {
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
 
 /* Top Bar Styling */
 #top-bar {
@@ -137,6 +144,12 @@ a {
 /* For Mobile Devices */
 @media (max-width: 768px) {
     /* Hide desktop nav and show mobile toggle */
+     .nav-links {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+         transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
     .nav-links, .desktop-contact {
         display: none;
     }
@@ -157,6 +170,8 @@ a {
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         padding: 10px 0;
         gap: 0;
+         max-height: 500px;
+         opacity: 1;
     }
 
     .nav-links.active li {

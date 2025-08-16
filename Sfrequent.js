@@ -1,72 +1,60 @@
-
-/*-----------header animation----*/
-
 document.addEventListener('DOMContentLoaded', function() {
-
-   
-
-    // --- 1. Mobile Menu Toggle ---
-
+    // Mobile Menu Toggle
     const menuToggle = document.getElementById('menu-toggle');
-
     const navLinks = document.getElementById('nav-links');
 
-
     if (menuToggle && navLinks) {
-
         menuToggle.addEventListener('click', function() {
-
             navLinks.classList.toggle('active');
-
         });
-
     }
 
-
-    // --- 2. Hide Header on Scroll ---
-
+    // Enhanced Hide/Show Header on Scroll
     const header = document.getElementById('page-header');
-
     let lastScrollY = window.scrollY;
+    const scrollThreshold = 50;
+    let ticking = false;
 
+    window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+        
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                handleHeaderVisibility(currentScrollY, lastScrollY);
+                lastScrollY = currentScrollY > 0 ? currentScrollY : 0;
+                ticking = false;
+            });
+            ticking = true;
+        }
 
-    window.addEventListener('scroll', () => {
-
-        // --- NEW: Automatically close open menu on scroll ---
-
-        if (navLinks.classList.contains('active')) {
-
+        // Close mobile menu if open
+        if (navLinks && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
-
         }
-
-        // --- End of new code ---
-
-
-        if (lastScrollY < window.scrollY && window.scrollY > 150) {
-
-            // If scrolling DOWN and past the top 150px of the page
-
-            header.classList.add('hidden');
-
-        } else {
-
-            // If scrolling UP
-
-            header.classList.remove('hidden');
-
-        }
-
-        // Update the last scroll position for the next scroll event
-
-        lastScrollY = window.scrollY;
-
     });
 
+    function handleHeaderVisibility(currentScrollY, lastScrollY) {
+        if (currentScrollY > scrollThreshold) {
+            if (currentScrollY > lastScrollY) {
+                // Scrolling DOWN - hide header
+                header.classList.add('hidden');
+            } else {
+                // Scrolling UP - show header
+                header.classList.remove('hidden');
+            }
+        } else {
+            // Near top of page - show header
+            header.classList.remove('hidden');
+        }
+        
+        // Update shadow based on scroll position
+        if (currentScrollY > 10) {
+            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        } else {
+            header.style.boxShadow = 'none';
+        }
+    }
 });
-
-
-
 
 /*-----------------footer animation------------*/
 
