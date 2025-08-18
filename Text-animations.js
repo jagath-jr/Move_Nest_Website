@@ -79,6 +79,34 @@ document.addEventListener("DOMContentLoaded", function() {
     gsap.from(element.querySelectorAll("span"), { scale: 0, opacity: 0, duration: 1, ease: "back.out(2)", stagger: 0.04, scrollTrigger: { trigger: element, start: "top 85%", toggleActions: "play none none none" } });
   });
 
+  /*-------------- WAVE ANIMATION --------------*/
+gsap.utils.toArray(".animate-wave").forEach(element => {
+    const text = element.textContent;
+    element.textContent = "";
+    for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const span = document.createElement("span");
+        span.textContent = char;
+        span.style.display = char === " " ? "inline" : "inline-block";
+        element.appendChild(span);
+    }
+    
+    gsap.from(element.querySelectorAll("span"), {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: "back.out(1.7)",
+        stagger: {
+            amount: 0.6,
+            from: "random"  // This creates a more wave-like effect
+        },
+        scrollTrigger: {
+            trigger: element,
+            start: "top 85%",
+            toggleActions: "play none none none"
+        }
+    });
+});
   // --- 8. SKEW AND UN-SKEW SLIDE-IN ---
   gsap.utils.toArray(".animate-skew-in").forEach(element => {
     gsap.from(element, { skewX: 20, x: -100, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: element, start: "top 85%", toggleActions: "play none none none" } });
