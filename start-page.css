@@ -804,16 +804,21 @@
 }
 
 .about-content-column-01 h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     line-height: 1.2;
     margin-bottom: 1.5rem;
     color: #2c3e50;
+   overflow-wrap: break-word; 
+}
+.about-content-column-01 h1 {
+    overflow-wrap: break-word !important;
 }
 
 .about-content-column-01 p {
     line-height: 1.6;
     margin-bottom: 1.5rem;
     color: #666;
+    text-align: justify;
 }
 
 .mission-vision-01 h2 {
@@ -874,7 +879,11 @@
         font-size: 2rem;
     }
 }
-
+@media (max-width: 768px) {
+    .about-content-column-01 h1 {
+        font-size: 1.8rem; 
+    }
+}
 
 /*-------------section 4 starts here------------*/
 
@@ -1201,10 +1210,11 @@
 }
 
 .testimonial-quote {
-    font-size: 15px;
+    font-size: 1rem;
     color: #444;
     margin: 0 0 25px 0;
     flex-grow: 1; /* Ensures the quote takes up available space */
+    text-align: justify;
 }
 
 .testimonial-author-info {
