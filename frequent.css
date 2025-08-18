@@ -113,7 +113,19 @@ a {
     font-size: 24px;
     cursor: pointer;
 }
+.animate-roll-in {
+    /* This helps align the character containers correctly */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
+.char-container {
+    display: inline-block;
+    overflow: hidden; /* This is the mask that hides the rolling character */
+    vertical-align: top;
+    line-height: 1.1; /* Adjust to fit font */
+}
 /* === Responsive Media Queries === */
 
 /* For Tablets and Smaller Devices - Implements Horizontal Scroll */
