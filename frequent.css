@@ -337,6 +337,7 @@ a {
 }
 .footer-about-unik p {
     margin: 0;
+    text-align: justify;
 }
 
 /* Common Styles for Headings and Lists */
