@@ -345,31 +345,27 @@ document.addEventListener("DOMContentLoaded", function() {
 // 6 section -----------------------------------
 
 
-document.addEventListener('DOMContentLoaded', () => {
-
-    // Select all the cards to animate
-    const cards = document.querySelectorAll('.contact-info-card');
-
-    // Set up the Intersection Observer to watch when cards enter the viewport
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            // If the card is in view
-            if (entry.isIntersecting) {
-                // Remove the initial styles to trigger the transition
-                entry.target.classList.add('is-visible');
-                // Stop observing the card once it's visible
-                observer.unobserve(entry.target);
-            }
+ document.addEventListener('DOMContentLoaded', function() {
+            const contactCards = document.querySelectorAll('.contact-info-card');
+            
+            // Initially set all cards to visible for demo purposes
+            // In a real implementation, you would use Intersection Observer to detect when they enter the viewport
+            contactCards.forEach(card => {
+                card.classList.add('is-visible');
+            });
+            
+            // For a real implementation, you would use something like this:
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            contactCards.forEach(card => {
+                observer.observe(card);
+            });
+        
         });
-    }, {
-        threshold: 0.1 // Trigger when 10% of the card is visible
-    });
-
-    // Observe each card and apply a staggered delay
-    cards.forEach((card, index) => {
-        // Set an inline style for the transition delay
-        card.style.transitionDelay = `${index * 150}ms`; // 0ms, 150ms, 300ms, etc.
-        observer.observe(card);
-    });
-
-});
