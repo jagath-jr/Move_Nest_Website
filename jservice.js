@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const counterObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateCounter(counterElement, 29, 1500); // Counts to 29 over 1.5 seconds
+                animateCounter(counterElement, 6, 1500); // Counts to 6 over 1.5 seconds
                 observer.unobserve(entry.target);
             }
         });
