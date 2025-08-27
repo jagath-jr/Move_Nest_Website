@@ -74,7 +74,7 @@
 
     font-size: 1.1rem;
 
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
 
     /* --- ANIMATION ADDED --- */
 
@@ -83,6 +83,7 @@
     animation: fadeInUp 0.8s ease-out 0.3s forwards; /* 0.3s delay */
 text-align: justify;
 text-justify: inter-word;
+line-height: 1.5;
 }
 
 
@@ -1045,17 +1046,22 @@ text-justify: inter-word;
 }
 
 @media (max-width: 768px) {
-     #stats-features-section-df89 {
+    #stats-features-section-df89 {
         margin-top: 0;
         clip-path: none;
         padding: 40px 16px; /* Add horizontal padding */
     }
 
-    /* === STATS SECTION: 2 per row === */
-    .stats-container-df89 {
+    /* === STATS SECTION: 2 per row, last one centered === */
+    /* .stats-container-df89 {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 16px;
+    } */
+
+    /* This is the new rule */
+    .stat-item-gh56:last-child {
+        grid-column: 1 / -1; /* Make the last item span the full width */
     }
 
     .stat-item-gh56 {
@@ -1072,12 +1078,17 @@ text-justify: inter-word;
         font-size: 0.9rem;
     }
 
-    /* === FEATURES SECTION: 2 per row === */
-    .features-container-ae45 {
+    /* === FEATURES SECTION: 2 per row, last one centered === */
+    /* .features-container-ae45 {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 16px;
         margin-top: 25px;
+    } */
+    
+    /* This is the new rule */
+    .feature-item-lk34:last-child {
+        grid-column: 1 / -1; /* Make the last item span the full width */
     }
 
     .feature-item-lk34 {
@@ -1098,7 +1109,6 @@ text-justify: inter-word;
         font-size: 0.95rem;
     }
 }
-
 
 /*-----------section 5 starts here------------*/
 
@@ -1166,7 +1176,7 @@ text-justify: inter-word;
     transform: translateY(-20px); /* Start above */
 }
 
-}
+
 
 .testimonial-main-heading {
    font-size: 42px;

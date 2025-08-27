@@ -325,8 +325,8 @@ a {
 
 /* Column 1: About Section */
 .footer-about-unik .footer-logo-unik {
-    max-width: 200px;
-    margin-bottom: 20px;
+    max-width: 5rem;
+    margin-bottom: 1.5rem;
 }
 .footer-logo-unik {
   transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
