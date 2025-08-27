@@ -450,7 +450,7 @@
 /* Grid layout for the office cards */
 #contact-us-section .office-cards-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr ;
     gap: 40px;
     text-align: left;
 }
