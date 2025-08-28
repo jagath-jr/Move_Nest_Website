@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
     background-color: #f4f4f4;
+    padding-top: 8rem;
 }
 
 /* Prevent horizontal scrolling */
@@ -33,18 +34,24 @@ a {
 
 /* Header & Scroll Functionality */
 #page-header {
-    position: sticky;
+   position: fixed; /* Changed from sticky to fixed for more reliable behavior */
     top: 0;
     width: 100%;
     z-index: 1000;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.4s ease-in-out;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.25s ease;
+    will-change: transform;
 }
-
 #page-header.hidden {
     transform: translateY(-100%);
+    box-shadow: none;
 }
+.nav-links {
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
 
 /* Top Bar Styling */
 #top-bar {
@@ -69,8 +76,11 @@ a {
 
 #site-logo img {
     max-height: 50px;
+     transition: transform 0.3s ease;
 }
-
+#site-logo:hover img {
+    transform: scale(1.1); /* Scales the image to 110% on hover */
+}
 .nav-links {
     list-style: none;
     margin: 0;
@@ -103,7 +113,19 @@ a {
     font-size: 24px;
     cursor: pointer;
 }
+.animate-roll-in {
+    /* This helps align the character containers correctly */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
+.char-container {
+    display: inline-block;
+    overflow: hidden; /* This is the mask that hides the rolling character */
+    vertical-align: top;
+    line-height: 1.1; /* Adjust to fit font */
+}
 /* === Responsive Media Queries === */
 
 /* For Tablets and Smaller Devices - Implements Horizontal Scroll */
@@ -137,6 +159,12 @@ a {
 /* For Mobile Devices */
 @media (max-width: 768px) {
     /* Hide desktop nav and show mobile toggle */
+     .nav-links {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+         transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
     .nav-links, .desktop-contact {
         display: none;
     }
@@ -157,6 +185,8 @@ a {
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         padding: 10px 0;
         gap: 0;
+         max-height: 500px;
+         opacity: 1;
     }
 
     .nav-links.active li {
@@ -225,42 +255,49 @@ a {
 }
 
 /*------------------------------------*/
-/* Moving Text Banner (FINAL)         */
+/* Enhanced Moving Text Banner         */
 /*------------------------------------*/
 .unik-marquee-banner {
     background-color: #1B1F28;
     padding: 15px 0;
     overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
+    position: relative;
 }
 
-/* This is the container that moves */
 .unik-marquee-wrapper {
-    display: inline-block;
-    animation: marquee-scroll-unik 30s linear infinite;
+    display: flex;
+    animation: marquee-scroll 40s linear infinite;
+    will-change: transform;
 }
 
-/* A single block of text content */
 .unik-marquee-segment {
-    display: inline-block;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 0 60px;
 }
 
 .unik-marquee-segment span {
-    padding: 0 2em;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    white-space: nowrap;
+    padding: 0 20px;
 }
 
-/* The animation definition */
-@keyframes marquee-scroll-unik {
-    from {
-        transform: translateX(0%);
+/* Animation with perfect loop */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
     }
-    to {
+    100% {
         transform: translateX(-50%);
     }
+}
+
+/* Pause on hover for better readability */
+.unik-marquee-banner:hover .unik-marquee-wrapper {
+    animation-play-state: paused;
 }
 
 /*------------------------------------*/
@@ -288,12 +325,19 @@ a {
 
 /* Column 1: About Section */
 .footer-about-unik .footer-logo-unik {
-    max-width: 200px;
-    margin-bottom: 20px;
+    max-width: 5rem;
+    margin-bottom: 1.5rem;
+}
+.footer-logo-unik {
+  transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
 }
 
+.footer-logo-unik:hover {
+  transform: scale(1.1); /* Scales the image to 110% of its original size */
+}
 .footer-about-unik p {
     margin: 0;
+    text-align: justify;
 }
 
 /* Common Styles for Headings and Lists */
@@ -424,23 +468,22 @@ a {
         font-size: 1.5rem;
     }
 
-    /* Marquee Banner Fixes */
+    /* Marquee Banner Mobile Optimization */
     .unik-marquee-banner {
-        white-space: normal;
-        padding: 10px;
-        text-align: center;
+        padding: 12px 0;
     }
     
     .unik-marquee-wrapper {
-        animation: none;
-        display: block;
+        animation-duration: 20s;
     }
     
     .unik-marquee-segment {
-        display: block;
-        white-space: normal;
+        padding: 0 20px;
+    }
+    
+    .unik-marquee-segment span {
         font-size: 1.2rem;
-        padding: 5px 0;
+        padding: 0 10px;
     }
     
     /* Footer Content Fixes */
@@ -481,5 +524,16 @@ a {
     /* Adjust footer padding */
     .footer-main-content-unik {
         padding: 30px 15px;
+    }
+}
+
+/* Smaller Mobile Devices */
+@media (max-width: 480px) {
+    .unik-marquee-segment span {
+        font-size: 1rem;
+    }
+    
+    .unik-marquee-wrapper {
+        animation-duration: 15s;
     }
 }

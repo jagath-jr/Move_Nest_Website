@@ -1,3 +1,4 @@
+
 .container {
 
     width: 90%;
@@ -59,6 +60,8 @@
     line-height: 1.2;
 
     margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
 
     /* --- ANIMATION ADDED --- */
 
@@ -72,8 +75,10 @@
 #hero-description {
 
     font-size: 1.1rem;
-
+    line-height: 1.5;
     margin-bottom: 30px;
+    text-align: justify;
+    text-justify: inter-word;
 
     /* --- ANIMATION ADDED --- */
 
@@ -173,7 +178,7 @@
 }
 
 
-#phone-numbers {
+/* #phone-numbers {
 
     display: grid;
 
@@ -181,7 +186,7 @@
 
     gap: 10px;
 
-}
+} */
 
 
 #phone-numbers a {
@@ -449,7 +454,7 @@
 /* Grid layout for the office cards */
 #contact-us-section .office-cards-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr ;
     gap: 40px;
     text-align: left;
 }
@@ -541,6 +546,7 @@
 
     #contact-us-section .office-cards-wrapper {
         grid-template-columns: 1fr; /* Single column layout */
+        justify-content: center;
     }
 
     .office-card {
@@ -636,6 +642,8 @@
     font-size: 15px;
     line-height: 1.6;
     color: #555;
+    text-align: justify;
+
 }
 
 .faq-answer p {
