@@ -106,8 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // });
 
 
-            alert('Thank you for your request! We will get back to you shortly.');
-
+           
             quoteForm.reset(); // Reset form fields after submission
 
         });
