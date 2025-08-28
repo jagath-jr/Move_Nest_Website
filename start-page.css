@@ -1229,6 +1229,7 @@ line-height: 1.5;
     margin: 0 0 25px 0;
     flex-grow: 1; /* Ensures the quote takes up available space */
     text-align: justify;
+    line-height: 1.5;
 }
 
 .testimonial-author-info {

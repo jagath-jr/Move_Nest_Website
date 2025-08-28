@@ -60,6 +60,8 @@
     line-height: 1.2;
 
     margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
 
     /* --- ANIMATION ADDED --- */
 
@@ -73,8 +75,10 @@
 #hero-description {
 
     font-size: 1.1rem;
-
+    line-height: 1.5;
     margin-bottom: 30px;
+    text-align: justify;
+    text-justify: inter-word;
 
     /* --- ANIMATION ADDED --- */
 
@@ -638,6 +642,8 @@
     font-size: 15px;
     line-height: 1.6;
     color: #555;
+    text-align: justify;
+
 }
 
 .faq-answer p {
