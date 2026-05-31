@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {HTMLElement} el The element containing the number.
      * @param {number} duration The animation duration in milliseconds.
      */
-    const animateCount = (el, duration = 2000) => {
+    const animateCount = (el, duration = 1000) => {
         const endValue = parseInt(el.textContent, 10);
         // Set the initial text to 0
         el.textContent = '0'; 
@@ -258,18 +258,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     const counter = entry.target;
                     const targetValue = parseInt(counter.getAttribute('data-target'), 10);
                     let currentValue = 0;
-                    const increment = targetValue / 100;
-
-                    const updateCounter = () => {
-                        currentValue += increment;
-                        if (currentValue < targetValue) {
-                            counter.innerText = Math.ceil(currentValue);
+                    
+                    // ADJUST THIS VALUE (in milliseconds)
+                    const DURATION = 800; // 2000ms = 2 seconds
+                    const startTime = performance.now();
+                    
+                    const updateCounter = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / DURATION, 1);
+                        currentValue = Math.ceil(progress * targetValue);
+                        
+                        counter.innerText = currentValue;
+                        
+                        if (progress < 1) {
                             requestAnimationFrame(updateCounter);
                         } else {
                             counter.innerText = targetValue;
                         }
                     };
-                    updateCounter();
+                    
+                    requestAnimationFrame(updateCounter);
                     observer.unobserve(counter);
                 }
             });
@@ -279,7 +287,6 @@ document.addEventListener("DOMContentLoaded", () => {
         counters.forEach(counter => observer.observe(counter));
     }
 });
-
 
 // 5 section -----------------------------------
 

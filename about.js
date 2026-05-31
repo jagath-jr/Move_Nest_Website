@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {HTMLElement} el The element containing the number.
      * @param {number} duration The animation duration in milliseconds.
      */
-    const animateCount = (el, duration = 2000) => {
+    const animateCount = (el, duration = 1000) => {
         const endValue = parseInt(el.textContent, 10);
         // Set the initial text to 0
         el.textContent = '0'; 
